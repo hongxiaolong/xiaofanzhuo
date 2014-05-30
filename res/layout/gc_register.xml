@@ -1,0 +1,89 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#DDDDDD"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/register_linerlayout_title"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="#33CCFF"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/register_button_back"
+            android:layout_width="35dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/register_button_back_w" />
+
+        <TextView
+            android:id="@+id/register_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/register_button_back"
+            android:background="#33CCFF"
+            android:gravity="center_vertical"
+            android:text="用户注册"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#FFFFFF"
+            android:textSize="20dip" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/register_phonenumber"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/register_linerlayout_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="1dip"
+        android:layout_marginTop="50dip"
+        android:background="#FFFFFF"
+        android:gravity="left|center"
+        android:hint="手机号码"
+        android:phoneNumber="true"
+        android:textColorHint="#DDDDDD" />
+
+    <EditText
+        android:id="@+id/register_password"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/register_phonenumber"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="1dip"
+        android:background="#FFFFFF"
+        android:gravity="left|center"
+        android:hint="密码"
+        android:password="true"
+        android:scrollHorizontally="true"
+        android:textColorHint="#DDDDDD" />
+
+    <EditText
+        android:id="@+id/register_repassword"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/register_password"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="1dip"
+        android:background="#FFFFFF"
+        android:gravity="left|center"
+        android:hint="再次输入密码"
+        android:password="true"
+        android:scrollHorizontally="true"
+        android:textColorHint="#DDDDDD" />
+
+    <Button
+        android:id="@+id/regsiter_registerbutton"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/register_repassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dip"
+        android:background="#33CCFF"
+        android:gravity="center"
+        android:text="注册"
+        android:textColor="#FFFFFF" />
+
+</RelativeLayout>

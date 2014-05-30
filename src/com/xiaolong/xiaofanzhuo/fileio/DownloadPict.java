@@ -32,9 +32,9 @@ public class DownloadPict extends Thread {
 			msgClear.what = 2;
 			mHandler.sendMessage(msgClear);
 			for (String f : ids) {
-				String id = action.getStringFromServerById(f);
+				String imageUrl = action.getStringFromServerById(f + "ImageUrl");
 				@SuppressWarnings("unused")
-				Bitmap map = FileUtil.getBitMapIfNecessary(id);//由图片url获取bitmap
+				Bitmap map = FileUtil.getBitMapIfNecessary(imageUrl);//由图片url获取bitmap
 				Message msg = mHandler.obtainMessage();
 				Bundle data = new Bundle();
 				data.putString("id", f);//把唯一标识符传过去

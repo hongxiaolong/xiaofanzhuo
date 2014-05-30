@@ -21,7 +21,7 @@ public class ThumbHandler extends Handler {
 			adapter.addPicture(data);
 			break;
 		case 2:
-//			adapter.clear();
+			adapter.clear();
 			break;
 		default:
 			break;

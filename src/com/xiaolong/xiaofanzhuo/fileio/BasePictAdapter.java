@@ -67,6 +67,10 @@ public class BasePictAdapter extends AbstractBasePictAdapter{
 		return isMultiSelectMode;
 	}
 	
+	/**
+	 * @author hongxiaolong
+	 * @return 多选记录
+	 */
 	@Override
 	public List<Bundle> getAll() {
 		List<Bundle> bundleList = new ArrayList<Bundle>();
