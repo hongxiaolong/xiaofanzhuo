@@ -1,4 +1,4 @@
-package com.xiaolong.xiaofanzhuo.fileio;
+package com.xiaolong.xiaofanzhuo.datafromserver;
 
 import java.io.BufferedReader;
 import java.io.IOException;

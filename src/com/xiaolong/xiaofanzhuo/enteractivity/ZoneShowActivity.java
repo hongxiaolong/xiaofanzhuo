@@ -96,7 +96,7 @@ public class ZoneShowActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(ZoneShowActivity.this, ZoneShowActivity.class);
+				intent.setClass(ZoneShowActivity.this, LoginActivity.class);
 				startActivity(intent);
 				finish();
 			}

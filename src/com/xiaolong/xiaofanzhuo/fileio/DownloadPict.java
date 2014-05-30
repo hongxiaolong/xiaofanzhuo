@@ -2,6 +2,8 @@ package com.xiaolong.xiaofanzhuo.fileio;
 
 import java.util.List;
 
+import com.xiaolong.xiaofanzhuo.datafromserver.GetResponseFromServerAction;
+
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
