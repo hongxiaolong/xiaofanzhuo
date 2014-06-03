@@ -32,7 +32,6 @@ import com.xiaolong.xiaofanzhuo_xiaolonginfo.R;
 public class LoginActivity extends BaseActivity {
 
 	private static final String TAG = "LoginActivity";
-	private static final String SEPARATOR = "----";
 	static final int CANSHU = 1;
 	private EditText edTextUser, edTextSecretCode;
 	private Button buttonLogin;
@@ -53,6 +52,7 @@ public class LoginActivity extends BaseActivity {
 		setContentView(R.layout.hong_login);
 
 		sp = this.getSharedPreferences("xiaofanzhuologininfo", MODE_PRIVATE);
+
 		edTextUser = (EditText) findViewById(R.id.edittext_user);
 		edTextSecretCode = (EditText) findViewById(R.id.edittext_secretcode);
 		keepPassword = (CheckBox) findViewById(R.id.checkbox_secretcode);
@@ -92,6 +92,10 @@ public class LoginActivity extends BaseActivity {
 				try {
 					String requestCode = "WhiteLogin____" + userName + "_"
 							+ password;
+					
+					Log.i(TAG, userName);
+					Log.i(TAG, password);
+					
 					GetResponseFromServerAction reponse = new GetResponseFromServerAction();
 					String ret = reponse.getStringFromServerById(requestCode);
 					if (ret.contains("WhiteLogin_Result____UsernameTRUE_PasswdTRUE")) {
@@ -99,12 +103,11 @@ public class LoginActivity extends BaseActivity {
 						Toast.makeText(LoginActivity.this, "登录成功!",
 								Toast.LENGTH_SHORT).show();
 
-						if (true == autoLoginFlag || true == keepPwdFlag)
-							sp.edit()
-									.putString("LOGININFO",
-											userName + SEPARATOR + password)
-									.commit();
-						Log.i(TAG, userName + SEPARATOR + password);
+						if (true == autoLoginFlag || true == keepPwdFlag) {
+							sp.edit().putString("USERNAME", userName).commit();
+							sp.edit().putString("PASSWORD", password).commit();
+						}
+
 						Intent intent = new Intent();
 						intent.setClass(LoginActivity.this,
 								PersonInfoActivity.class);
@@ -161,7 +164,7 @@ public class LoginActivity extends BaseActivity {
 				Intent intent = new Intent(LoginActivity.this,
 						RegisterActivity.class);
 				LoginActivity.this.startActivity(intent);
-				//LoginActivity.this.finish();
+				// LoginActivity.this.finish();
 			}
 
 		});
@@ -169,15 +172,14 @@ public class LoginActivity extends BaseActivity {
 
 	private void checkAutoLogin() {
 
-		if (sp.contains("AUTOLOGIN") && sp.contains("LOGININFO")) {
+		if (sp.contains("AUTOLOGIN") && sp.contains("USERNAME") && sp.contains("PASSWORD")) {
 
 			boolean autoFlag = sp.getBoolean("AUTOLOGIN", false);
 			if (true == autoFlag) {
 				try {
-					String info[] = sp.getString("AUTOLOGIN", "").split(
-							SEPARATOR);
-					String requestCode = "WhiteLogin____" + info[0] + "_"
-							+ info[1];
+					String user = sp.getString("USERNAME", "");
+					String pwd = sp.getString("PASSWORD", "");
+					String requestCode = "WhiteLogin____" + user + "_" + pwd;
 					GetResponseFromServerAction reponse = new GetResponseFromServerAction();
 					String ret = reponse.getStringFromServerById(requestCode);
 					if (ret.contains("WhiteLogin_Result____UsernameTRUE_PasswdTRUE")) {
@@ -185,7 +187,8 @@ public class LoginActivity extends BaseActivity {
 								Toast.LENGTH_SHORT).show();
 
 						Intent intent = new Intent();
-						intent.setClass(LoginActivity.this, PersonInfoActivity.class);
+						intent.setClass(LoginActivity.this,
+								PersonInfoActivity.class);
 						startActivity(intent);
 						return;
 					}
@@ -209,11 +212,11 @@ public class LoginActivity extends BaseActivity {
 
 	private void checkKeepPwd() {
 
-		if (sp.contains("KEEPPWD") && sp.contains("LOGININFO")) {
+		if (sp.contains("KEEPPWD") && sp.contains("USERNAME") && sp.contains("PASSWORD")) {
 			boolean keepFlag = sp.getBoolean("KEEPPWD", false);
 			if (true == keepFlag) {
-				String info[] = sp.getString("LOGININFO", "").split(SEPARATOR);
-				edTextUser.setText(info[0]);
+				String user = sp.getString("USERNAME", "");
+				edTextUser.setText(user);
 				edTextSecretCode.setText("********");
 			}
 		}

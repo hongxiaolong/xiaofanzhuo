@@ -44,7 +44,7 @@
         android:gravity="left|center"
         android:hint="手机号码"
         android:phoneNumber="true"
-        android:textColorHint="#DDDDDD" />
+        android:textColorHint="#ffffff" />
 
     <EditText
         android:id="@+id/register_password"
@@ -58,7 +58,7 @@
         android:hint="密码"
         android:password="true"
         android:scrollHorizontally="true"
-        android:textColorHint="#DDDDDD" />
+        android:textColorHint="#ffffff" />
 
     <EditText
         android:id="@+id/register_repassword"
@@ -72,7 +72,7 @@
         android:hint="再次输入密码"
         android:password="true"
         android:scrollHorizontally="true"
-        android:textColorHint="#DDDDDD" />
+        android:textColorHint="#ffffff" />
 
     <Button
         android:id="@+id/regsiter_registerbutton"

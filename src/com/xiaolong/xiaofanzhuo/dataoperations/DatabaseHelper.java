@@ -3,49 +3,43 @@ package com.xiaolong.xiaofanzhuo.dataoperations;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
-
+import android.util.Log;
 /**
- * SQLiteOpenHelper是一个辅助类，用来管理数据库的创建和版本他，它提供两个方面的功能
- * 第一，getReadableDatabase()、getWritableDatabase()可以获得SQLiteDatabase对象，通过该对象可以对数据库进行操作
- * 第二，提供了onCreate()、onUpgrade()两个回调函数，允许我们再创建和升级数据库时，进行自己的操作
+ * This class creates the relation with the SQLite Database Helper
+ * through which queries can be SQL called. 		
+ * @author Andrei
+ *
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
-	private static final int VERSION = 1;
-
+	// The database name and version
+	private static final String DB_NAME = "login";
+	private static final int DB_VERSION = 1;
+	// The database user table
+	private static final String DB_TABLE = "create table user (id integer primary key autoincrement, " 
+											+ "username text not null, password text not null);";
 	/**
-	 * 在SQLiteOpenHelper的子类当中，必须有该构造函数
-	 * @param context	上下文对象
-	 * @param name		数据库名称
-	 * @param factory
-	 * @param version	当前数据库的版本，值必须是整数并且是递增的状态
+	 * Database Helper constructor. 
+	 * @param context
 	 */
-	public DatabaseHelper(Context context, String name, CursorFactory factory,
-			int version) {
-		//必须通过super调用父类当中的构造函数
-		super(context, name, factory, version);
+	public DatabaseHelper(Context context) {
+		super(context, DB_NAME, null, DB_VERSION);
 	}
-	
-	public DatabaseHelper(Context context, String name, int version){
-		this(context,name,null,version);
-	}
-
-	public DatabaseHelper(Context context, String name){
-		this(context,name,VERSION);
-	}
-
-	//该函数是在第一次创建的时候执行，实际上是第一次得到SQLiteDatabase对象的时候才会调用这个方法
+	/**
+	 * Creates the database tables.
+	 */
 	@Override
-	public void onCreate(SQLiteDatabase db) {
-		// TODO Auto-generated method stub
-		System.out.println("create a database");
-		//execSQL用于执行SQL语句
-		db.execSQL("create table user(id int,name varchar(20))");
+	public void onCreate(SQLiteDatabase database) {
+		database.execSQL(DB_TABLE);
 	}
-
+	/**
+	 * Handles the table version and the drop of a table.   
+	 */			
 	@Override
-	public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
-		// TODO Auto-generated method stub
-		System.out.println("upgrade a database");
+	public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
+		Log.w(DatabaseHelper.class.getName(),
+				"Upgrading databse from version" + oldVersion + "to " 
+				+ newVersion + ", which will destroy all old data");
+		database.execSQL("DROP TABLE IF EXISTS user");
+		onCreate(database);
 	}
 }

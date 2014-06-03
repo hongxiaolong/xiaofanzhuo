@@ -77,8 +77,9 @@ public class RegisterActivity extends BaseActivity {
 							+ phoneNumber + "_" + password;
 					GetResponseFromServerAction reponse = new GetResponseFromServerAction();
 					String ret = reponse.getStringFromServerById(requestCode);
-					if (ret.contains("WhiteZhuCe_Result____UsernameTRUE_PasswdTRUE\n")) {
-						Toast.makeText(RegisterActivity.this, "注册成功，请重新登录!",
+					Log.i(TAG, ret);
+					if (ret.contains("WhiteZhuCe_Result____UsernameTRUE_PasswdTRUE")) {
+						Toast.makeText(RegisterActivity.this, "注册成功!",
 								Toast.LENGTH_SHORT).show();
 						Intent intent = new Intent();
 						intent.setClass(RegisterActivity.this,
@@ -87,7 +88,7 @@ public class RegisterActivity extends BaseActivity {
 						RegisterActivity.this.finish();
 						return;
 					}
-					if (ret.contains("WhiteZhuCe_Result____UsernameFALSE_PasswdFALSE\n")) {
+					if (ret.contains("WhiteZhuCe_Result____UsernameFALSE_PasswdFALSE")) {
 						Toast.makeText(RegisterActivity.this,
 								"注册失败，请检查用户名、密码或网络!", Toast.LENGTH_SHORT)
 								.show();
