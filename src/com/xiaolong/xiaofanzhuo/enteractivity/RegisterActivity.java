@@ -71,7 +71,12 @@ public class RegisterActivity extends BaseActivity {
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
-
+				
+				AccountAuthentication authentication = new AccountAuthentication();
+				AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+				if (!authentication.checkup(phoneNumber, password, builder))
+					return;
+				
 				try {
 					String requestCode = "WhiteZhuCe_Username_Passwd____"
 							+ phoneNumber + "_" + password;
@@ -94,6 +99,8 @@ public class RegisterActivity extends BaseActivity {
 								.show();
 						return;
 					}
+					Toast.makeText(RegisterActivity.this, "亲，网络不给力，请稍后!",
+							Toast.LENGTH_SHORT).show();
 					Log.i(TAG, "注册服务器返回信息未定义!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block

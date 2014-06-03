@@ -77,8 +77,10 @@ public class LoginActivity extends BaseActivity {
 		buttonLogin.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
+				
 				userName = edTextUser.getText().toString();
 				password = edTextSecretCode.getText().toString();
+				
 				if (userName.equals("")) {
 					Toast.makeText(LoginActivity.this, "请输入手机号",
 							Toast.LENGTH_SHORT).show();
@@ -88,14 +90,18 @@ public class LoginActivity extends BaseActivity {
 					Toast.makeText(LoginActivity.this, "请输入密码",
 							Toast.LENGTH_SHORT).show();
 					return;
-				}
+				}		
+				
+				AccountAuthentication authentication = new AccountAuthentication();
+				AlertDialog.Builder builder = new AlertDialog.Builder(
+						LoginActivity.this);
+				if (!authentication.checkup(userName, password, builder))
+					return;
+
 				try {
 					String requestCode = "WhiteLogin____" + userName + "_"
 							+ password;
-					
-					Log.i(TAG, userName);
-					Log.i(TAG, password);
-					
+
 					GetResponseFromServerAction reponse = new GetResponseFromServerAction();
 					String ret = reponse.getStringFromServerById(requestCode);
 					if (ret.contains("WhiteLogin_Result____UsernameTRUE_PasswdTRUE")) {
@@ -112,6 +118,7 @@ public class LoginActivity extends BaseActivity {
 						intent.setClass(LoginActivity.this,
 								PersonInfoActivity.class);
 						startActivity(intent);
+						LoginActivity.this.finish();
 						return;
 					}
 					if (ret.contains("WhiteLogin_Result____UsernameFALSE_PasswdFALSE")) {
@@ -119,6 +126,8 @@ public class LoginActivity extends BaseActivity {
 								Toast.LENGTH_SHORT).show();
 						return;
 					}
+					Toast.makeText(LoginActivity.this, "亲，网络不给力，请稍后!",
+							Toast.LENGTH_SHORT).show();
 					Log.i(TAG, "登录服务器返回信息未定义!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
@@ -149,6 +158,7 @@ public class LoginActivity extends BaseActivity {
 					boolean isChecked) {
 				if (autoLogin.isChecked()) {
 					autoLoginFlag = true;
+					keepPassword.setChecked(true);
 					sp.edit().putBoolean("AUTOLOGIN", true).commit();
 				} else {
 					sp.edit().putBoolean("AUTOLOGIN", false).commit();
@@ -172,10 +182,14 @@ public class LoginActivity extends BaseActivity {
 
 	private void checkAutoLogin() {
 
-		if (sp.contains("AUTOLOGIN") && sp.contains("USERNAME") && sp.contains("PASSWORD")) {
+		if (sp.contains("KEEPPWD") && sp.contains("AUTOLOGIN")
+				&& sp.contains("USERNAME") && sp.contains("PASSWORD")) {
 
 			boolean autoFlag = sp.getBoolean("AUTOLOGIN", false);
 			if (true == autoFlag) {
+				autoLogin.setChecked(true);
+				keepPwdFlag = true;
+				autoLoginFlag = true;
 				try {
 					String user = sp.getString("USERNAME", "");
 					String pwd = sp.getString("PASSWORD", "");
@@ -190,6 +204,7 @@ public class LoginActivity extends BaseActivity {
 						intent.setClass(LoginActivity.this,
 								PersonInfoActivity.class);
 						startActivity(intent);
+						LoginActivity.this.finish();
 						return;
 					}
 					if (ret.contains("WhiteLogin_Result____UsernameFALSE_PasswdFALSE")) {
@@ -212,12 +227,16 @@ public class LoginActivity extends BaseActivity {
 
 	private void checkKeepPwd() {
 
-		if (sp.contains("KEEPPWD") && sp.contains("USERNAME") && sp.contains("PASSWORD")) {
+		if (sp.contains("KEEPPWD") && sp.contains("USERNAME")
+				&& sp.contains("PASSWORD")) {
 			boolean keepFlag = sp.getBoolean("KEEPPWD", false);
 			if (true == keepFlag) {
+				keepPassword.setChecked(true);
+				keepPwdFlag = true;
 				String user = sp.getString("USERNAME", "");
+				String pwd = sp.getString("PASSWORD", "");
 				edTextUser.setText(user);
-				edTextSecretCode.setText("********");
+				edTextSecretCode.setText(pwd);
 			}
 		}
 	}

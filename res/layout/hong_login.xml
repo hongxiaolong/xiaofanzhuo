@@ -16,7 +16,7 @@
             android:layout_height="38dp"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="5dp"
-            android:background="@drawable/register_button_back_w" />
+            android:background="@drawable/hong_register_button_back_w" />
 
         <TextView
             android:id="@+id/register_title"
@@ -39,7 +39,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
         android:layout_weight="1"
-        android:src="@drawable/gc_register_login_title" />
+        android:src="@drawable/hong_logo" />
 
     <RelativeLayout
         android:layout_width="fill_parent"

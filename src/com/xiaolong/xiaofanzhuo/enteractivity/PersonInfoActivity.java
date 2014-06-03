@@ -2,12 +2,15 @@ package com.xiaolong.xiaofanzhuo.enteractivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.xiaolong.xiaofanzhuo.myapplication.BaseActivity;
 import com.xiaolong.xiaofanzhuo.myapplication.MyApplication;
@@ -16,6 +19,8 @@ import com.xiaolong.xiaofanzhuo_xiaolonginfo.R;
 public class PersonInfoActivity extends BaseActivity {
 
 	private Button buttonBack;
+	private Button buttonCart;
+	private Button buttonLogout;
 	private static final String TAG = "PersonInfoActivity";
 
 	@Override
@@ -23,15 +28,46 @@ public class PersonInfoActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.hong_login_personinfo);
+		
+		Toast.makeText(PersonInfoActivity.this, "登录成功",
+				Toast.LENGTH_SHORT).show();
+		
 		buttonBack = (Button) findViewById(R.id.register_button_back);
+		buttonCart = (Button) findViewById(R.id.btn_cart);
+		buttonLogout = (Button) findViewById(R.id.btn_logout);
 
 		buttonBack.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				PersonInfoActivity.this.finish();
 			}
-
+		});
+		buttonCart.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Toast.makeText(PersonInfoActivity.this, "敬请期待！",
+						Toast.LENGTH_SHORT).show();
+			}
+		});
+		buttonLogout.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Toast.makeText(PersonInfoActivity.this, "已注销",
+						Toast.LENGTH_SHORT).show();
+				SharedPreferences sp = PersonInfoActivity.this
+						.getSharedPreferences("xiaofanzhuologininfo",
+								MODE_PRIVATE);
+				sp.edit().putBoolean("KEEPPWD", false).commit();
+				sp.edit().putBoolean("AUTOLOGIN", false).commit();
+				sp.edit().putString("USERNAME", "").commit();
+				sp.edit().putString("PASSWORD", "").commit();
+				
+				Intent intent = new Intent();
+				intent.setClass(PersonInfoActivity.this,
+						LoginActivity.class);
+				startActivity(intent);
+				PersonInfoActivity.this.finish();
+			}
 		});
 	}
 

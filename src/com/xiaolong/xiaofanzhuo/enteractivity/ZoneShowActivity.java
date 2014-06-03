@@ -10,6 +10,8 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageButton;
 
+import com.xiaolong.xiaofanzhuo.businessdetails.BussinessDetailActivity;
+import com.xiaolong.xiaofanzhuo.fileio.FileUtil;
 import com.xiaolong.xiaofanzhuo.myapplication.BaseActivity;
 import com.xiaolong.xiaofanzhuo.myapplication.ButtonClickEffect;
 import com.xiaolong.xiaofanzhuo.myapplication.MyApplication;
@@ -69,6 +71,8 @@ public class ZoneShowActivity extends BaseActivity {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.hong_zone_show);
 
+		FileUtil.init();//设置文件缓存路径
+		
 		myApplication = (MyApplication) getApplication();// 获得我们的应用程序MyApplication
 
 		imageButton1 = (ImageButton) findViewById(R.id.img_dashanzi);
@@ -85,8 +89,8 @@ public class ZoneShowActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.putExtra("area", "1");
-				intent.setClass(ZoneShowActivity.this, ZoneShowActivity.class);
+//				intent.putExtra("area", "1");
+				intent.setClass(ZoneShowActivity.this, BussinessDetailActivity.class);
 				startActivity(intent);
 			}
 		});
@@ -98,7 +102,7 @@ public class ZoneShowActivity extends BaseActivity {
 				Intent intent = new Intent();
 				intent.setClass(ZoneShowActivity.this, LoginActivity.class);
 				startActivity(intent);
-				finish();
+				//finish();
 			}
 		});
 

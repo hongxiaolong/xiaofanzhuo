@@ -16,7 +16,7 @@
             android:layout_height="38dp"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="5dp"
-            android:background="@drawable/register_button_back_w" />
+            android:background="@drawable/hong_register_button_back_w" />
 
         <TextView
             android:id="@+id/register_title"
@@ -37,15 +37,28 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="#33CCFF" >
-        <TextView
-            android:id="@+id/person"
+
+        <Button
+            android:id="@+id/btn_cart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:background="#33CCFF"
             android:gravity="center"
-            android:text="登录成功"
+            android:text="我的订单"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#000000"
+            android:textSize="20dip" />
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:text="注销"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#000000"
             android:textSize="20dip" />
