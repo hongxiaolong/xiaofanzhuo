@@ -16,7 +16,7 @@
             android:layout_height="38dp"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="5dp"
-            android:background="@drawable/register_button_back_w" />
+            android:background="@drawable/hong_register_button_back_w" />
 
         <TextView
             android:id="@+id/register_title"
