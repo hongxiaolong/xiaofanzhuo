@@ -1,4 +1,4 @@
-package com.xiaolong.xiaofanzhuo.datafromserver;
+package com.xiaolong.xiaofanzhuo.dataoperations;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,6 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.os.AsyncTask;
+
+/*
+ * GetResponseFromServerAction
+ * by hongxiaolong
+ */
 
 public class GetResponseFromServerAction {
 

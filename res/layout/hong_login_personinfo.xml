@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#33CCFF"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/register_linerlayout_title"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="#33CCFF" >
+
+        <Button
+            android:id="@+id/register_button_back"
+            android:layout_width="33dp"
+            android:layout_height="38dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/register_button_back_w" />
+
+        <TextView
+            android:id="@+id/register_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="#33CCFF"
+            android:gravity="center"
+            android:text="用户信息"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#FFFFFF"
+            android:textSize="20dip" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/person_info"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#33CCFF" >
+        <TextView
+            android:id="@+id/person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="#33CCFF"
+            android:gravity="center"
+            android:text="登录成功"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#000000"
+            android:textSize="20dip" />
+    </RelativeLayout>
+
+</LinearLayout>

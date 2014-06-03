@@ -2,7 +2,7 @@ package com.xiaolong.xiaofanzhuo.fileio;
 
 import java.util.List;
 
-import com.xiaolong.xiaofanzhuo.datafromserver.GetResponseFromServerAction;
+import com.xiaolong.xiaofanzhuo.dataoperations.GetResponseFromServerAction;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;

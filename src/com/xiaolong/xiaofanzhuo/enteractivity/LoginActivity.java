@@ -17,7 +17,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.xiaolong.xiaofanzhuo.datafromserver.GetResponseFromServerAction;
+import com.xiaolong.xiaofanzhuo.dataoperations.GetResponseFromServerAction;
 import com.xiaolong.xiaofanzhuo.myapplication.BaseActivity;
 import com.xiaolong.xiaofanzhuo.myapplication.MyApplication;
 import com.xiaolong.xiaofanzhuo_xiaolonginfo.R;
@@ -43,7 +43,7 @@ public class LoginActivity extends BaseActivity {
 	private CheckBox keepPassword;
 	private CheckBox autoLogin;
 	private SharedPreferences sp;
-	private boolean autoLogFlag = false;
+	private boolean autoLoginFlag = false;
 	private boolean keepPwdFlag = false;
 
 	@Override
@@ -99,7 +99,7 @@ public class LoginActivity extends BaseActivity {
 						Toast.makeText(LoginActivity.this, "登录成功!",
 								Toast.LENGTH_SHORT).show();
 
-						if (true == autoLogFlag || true == keepPwdFlag)
+						if (true == autoLoginFlag || true == keepPwdFlag)
 							sp.edit()
 									.putString("LOGININFO",
 											userName + SEPARATOR + password)
@@ -107,7 +107,7 @@ public class LoginActivity extends BaseActivity {
 						Log.i(TAG, userName + SEPARATOR + password);
 						Intent intent = new Intent();
 						intent.setClass(LoginActivity.this,
-								ZoneShowActivity.class);
+								PersonInfoActivity.class);
 						startActivity(intent);
 						return;
 					}
@@ -145,7 +145,7 @@ public class LoginActivity extends BaseActivity {
 			public void onCheckedChanged(CompoundButton buttonView,
 					boolean isChecked) {
 				if (autoLogin.isChecked()) {
-					autoLogFlag = true;
+					autoLoginFlag = true;
 					sp.edit().putBoolean("AUTOLOGIN", true).commit();
 				} else {
 					sp.edit().putBoolean("AUTOLOGIN", false).commit();
@@ -161,7 +161,7 @@ public class LoginActivity extends BaseActivity {
 				Intent intent = new Intent(LoginActivity.this,
 						RegisterActivity.class);
 				LoginActivity.this.startActivity(intent);
-				LoginActivity.this.finish();
+				//LoginActivity.this.finish();
 			}
 
 		});
@@ -185,7 +185,7 @@ public class LoginActivity extends BaseActivity {
 								Toast.LENGTH_SHORT).show();
 
 						Intent intent = new Intent();
-						intent.setClass(LoginActivity.this, LoginActivity.class);
+						intent.setClass(LoginActivity.this, PersonInfoActivity.class);
 						startActivity(intent);
 						return;
 					}

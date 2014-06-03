@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.xiaolong.xiaofanzhuo.datafromserver.GetResponseFromServerAction;
+import com.xiaolong.xiaofanzhuo.dataoperations.GetResponseFromServerAction;
 import com.xiaolong.xiaofanzhuo.myapplication.BaseActivity;
 import com.xiaolong.xiaofanzhuo.myapplication.MyApplication;
 import com.xiaolong.xiaofanzhuo_xiaolonginfo.R;
