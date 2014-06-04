@@ -29,6 +29,9 @@ public class AccountAuthentication extends Activity {
 	String checkPassword;
 	String checkTelephone;
 
+	/*
+	 * 登录校验
+	 */
 	public boolean checkup(String telephones, String passwords,
 			AlertDialog.Builder builder) {
 		check = "check_nameContent";
@@ -55,45 +58,87 @@ public class AccountAuthentication extends Activity {
 		}
 		return false;
 	}
-
-	public boolean checkup(String names, String passwords, String telephones,
+	
+	/*
+	 * 注册校验
+	 */
+	public boolean checkup(String telephones, String passwords, String inviter, 
 			AlertDialog.Builder builder) {
-
 		check = "check_nameContent";
-
 		// 分步验证
-		if (names.equals("") || passwords.equals("") || telephones.equals("")) {
-			builder.setMessage("亲！您有必填项没填哦！");
+		if (passwords.equals("") || telephones.equals("")) {
+			builder.setMessage("亲！账号、密码为必填哦！");
 			this.dialogShow(builder);
-
 		} else {
 			// 初始状态
 			if (check.equals("check_nameContent"))
-				this.nameContentCheck(names, builder);
-			// 校验用户名
-			if (check.equals("nameContentRight"))
-				this.nameLengthCheck(names, builder);
-			// 校验用户名长度
-			if (check.equals("nameLengthRight"))
-				this.passwordContentCheck(passwords, builder);
-			// 校验密码内容
-			if (check.equals("passwordContentRight"))
-				this.passwordLenghtCheck(passwords, builder);
-			// 校验密码长度
-			if (check.equals("passwordLengthRight"))
 				this.telephoneContentCheck(telephones, builder);
 			// 校验手机号内容
 			if (check.equals("telephoneContentRight"))
 				this.telephoneLengthCheck(telephones, builder);
 			// 校验手机号长度
 			if (check.equals("telephoneLengthRight/AllRight"))
+				this.passwordContentCheck(passwords, builder);
+			// 校验密码内容
+			if (check.equals("passwordContentRight"))
+				this.passwordLenghtCheck(passwords, builder);
+			// 校验密码长度
+			if (check.equals("passwordLengthRight")) {
+				/*
+				 * 邀请码可以不填
+				 */
+				if (inviter.equals(null) || inviter.equals(""))
+					return true;
+				this.inviterContentCheck(inviter, builder);
+			}
+			//检验邀请码内容(手机号)
+			if (check.equals("inviterContentRight"))
+				this.inviterLengthCheck(inviter, builder);
+			//检验邀请码长度
+			if (check.equals("inviterLengthRight/AllRight"))
 				return true;
-
 		}
-
 		return false;
+	}
 
-	}// checkup()方法
+//	public boolean checkup(String names, String passwords, String telephones,
+//			AlertDialog.Builder builder) {
+//
+//		check = "check_nameContent";
+//
+//		// 分步验证
+//		if (names.equals("") || passwords.equals("") || telephones.equals("")) {
+//			builder.setMessage("亲！您有必填项没填哦！");
+//			this.dialogShow(builder);
+//
+//		} else {
+//			// 初始状态
+//			if (check.equals("check_nameContent"))
+//				this.nameContentCheck(names, builder);
+//			// 校验用户名
+//			if (check.equals("nameContentRight"))
+//				this.nameLengthCheck(names, builder);
+//			// 校验用户名长度
+//			if (check.equals("nameLengthRight"))
+//				this.passwordContentCheck(passwords, builder);
+//			// 校验密码内容
+//			if (check.equals("passwordContentRight"))
+//				this.passwordLenghtCheck(passwords, builder);
+//			// 校验密码长度
+//			if (check.equals("passwordLengthRight"))
+//				this.telephoneContentCheck(telephones, builder);
+//			// 校验手机号内容
+//			if (check.equals("telephoneContentRight"))
+//				this.telephoneLengthCheck(telephones, builder);
+//			// 校验手机号长度
+//			if (check.equals("telephoneLengthRight/AllRight"))
+//				return true;
+//
+//		}
+//
+//		return false;
+//
+//	}// checkup()方法
 
 	// 帐号内容验证
 	public void nameContentCheck(String names, AlertDialog.Builder builder) {
@@ -182,10 +227,25 @@ public class AccountAuthentication extends Activity {
 
 		// 内容验证
 		for (int i = 0; i < tempTelep.length; i++) {
+			//常用手机号码段验证13...，15...，18...
+			if (0 == i) {
+				if (49 != tempTelep[i]) {
+					builder.setMessage("亲！请确认您输入的是中国大陆的手机号段位！");
+					this.dialogShow(builder);
+					break;
+				}			
+			}
+			if (1 == i) {
+				if (51 != tempTelep[i] && 53 != tempTelep[i] && 56 != tempTelep[i]) {
+					builder.setMessage("亲！请确认您输入的是中国大陆的手机号段位！");
+					this.dialogShow(builder);
+					break;
+				}			
+			}
 			if (tempTelep[i] > 47 && tempTelep[i] < 58) {
 				check = "telephoneContentRight";// 手机内容合格，数字
 			} else {
-				builder.setMessage("亲！请确认您输入的是手机号！");
+				builder.setMessage("亲！请确认您输入的是中国大陆的手机号！");
 				this.dialogShow(builder);
 
 				break;
@@ -209,6 +269,56 @@ public class AccountAuthentication extends Activity {
 		}
 
 	}
+	
+	// **邀请码内容验证
+		public void inviterContentCheck(String inviter,
+				AlertDialog.Builder builder) {
+			char tempTelep[] = inviter.toCharArray();
+
+			// 内容验证
+			for (int i = 0; i < tempTelep.length; i++) {
+				//常用手机号码段验证13...，15...，18...
+				if (0 == i) {
+					if (49 != tempTelep[i]) {
+						builder.setMessage("亲！请输入正确的邀请码(邀请人手机号)或不填！");
+						this.dialogShow(builder);
+						break;
+					}			
+				}
+				if (1 == i) {
+					if (51 != tempTelep[i] && 53 != tempTelep[i] && 56 != tempTelep[i]) {
+						builder.setMessage("亲！请输入正确的邀请码(邀请人手机号)或不填！");
+						this.dialogShow(builder);
+						break;
+					}			
+				}
+				if (tempTelep[i] > 47 && tempTelep[i] < 58) {
+					check = "inviterContentRight";// 手机内容合格，数字
+				} else {
+					builder.setMessage("亲！请输入正确的邀请码(邀请人手机号)或不填！");
+					this.dialogShow(builder);
+
+					break;
+				}
+
+			}
+		}
+
+		// 邀请码长度验证
+		public void inviterLengthCheck(String inviter,
+				AlertDialog.Builder builder) {
+			char tempTelep[] = inviter.toCharArray();
+			if (check.equals("inviterContentRight")) {
+				if (tempTelep.length != 11) {
+					builder.setMessage("亲！邀请码(手机号)长度不正确！");
+					this.dialogShow(builder);
+
+				} else {
+					check = "inviterLengthRight/AllRight";
+				}
+			}
+
+		}
 
 	// 公用显示提示框
 	public void dialogShow(AlertDialog.Builder builder) {

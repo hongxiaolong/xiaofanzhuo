@@ -4,47 +4,20 @@
     android:background="#33CCFF"
     android:orientation="vertical" >
 
-    <RelativeLayout
-        android:id="@+id/register_linerlayout_title"
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:background="#33CCFF" >
-
-        <Button
-            android:id="@+id/register_button_back"
-            android:layout_width="33dp"
-            android:layout_height="38dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/hong_register_button_back_w" />
-
-        <TextView
-            android:id="@+id/register_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:background="#33CCFF"
-            android:gravity="center"
-            android:text="用户登录"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#FFFFFF"
-            android:textSize="20dip" />
-    </RelativeLayout>
+    <include layout="@layout/hong_navigation_bar" />
 
     <ImageView
         android:id="@+id/imageview_xiaofanzhuo_picture"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:layout_weight="1"
-        android:src="@drawable/hong_logo" />
+        android:src="@drawable/hong_login_logo" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="10dp"
         android:layout_weight="1" >
 
         <EditText
@@ -52,11 +25,13 @@
             android:layout_width="250dip"
             android:layout_height="40dip"
             android:layout_centerHorizontal="true"
-            android:layout_margin="2dip"
             android:layout_marginLeft="12dip"
             android:layout_marginRight="10dip"
+            android:layout_marginTop="5dp"
             android:background="#FFFFFF"
-            android:hint="手机号码" />
+            android:hint="手机号码"
+            android:maxLines="1"
+            android:singleLine="true" />
 
         <EditText
             android:id="@+id/edittext_secretcode"
@@ -69,8 +44,10 @@
             android:layout_marginRight="10dip"
             android:background="#FFFFFF"
             android:hint="密码"
+            android:maxLines="1"
             android:password="true"
-            android:scrollHorizontally="true" />
+            android:scrollHorizontally="true"
+            android:singleLine="true" />
 
         <LinearLayout
             android:id="@+id/auto_checkbox"
@@ -84,18 +61,30 @@
                 android:id="@+id/checkbox_secretcode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:background="#33CCFF"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="记住密码"
+                android:textAppearance="?android:textAppearanceMediumInverse"
                 android:textColor="#FFFFFF" />
 
             <CheckBox
                 android:id="@+id/checkbox_autologin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:background="#33CCFF"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="自动登录"
+                android:textAppearance="?android:textAppearanceMediumInverse"
                 android:textColor="#FFFFFF" />
         </LinearLayout>
 
@@ -107,44 +96,39 @@
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="12dip"
             android:layout_marginRight="10dip"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:background="#77DDFF"
             android:gravity="center"
             android:text="登录"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#000000" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/register_button"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp" >
 
         <LinearLayout
-            android:layout_width="250dip"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_alignLeft="@id/button_login"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal" >
 
             <Button
-                android:id="@+id/button_regeist"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dip"
-                android:layout_weight="1"
-                android:text="注册账号"
-                android:textColor="#ffffff" />
+                android:id="@+id/button_register"
+                android:layout_width="100dip"
+                android:layout_height="32dip"
+                android:background="@drawable/shape"
+                android:text="免费注册"
+                android:textColor="#fff0f5"
+                android:textSize="10sp" />
 
             <Button
                 android:id="@+id/button_forget"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dip"
-                android:layout_toRightOf="@id/button_regeist"
-                android:layout_weight="1"
+                android:layout_width="100dip"
+                android:layout_marginLeft="52dp"
+                android:layout_height="32dip"
+                android:background="@drawable/shape"
                 android:text="忘记密码"
-                android:textColor="#ffffff" />
+                android:textColor="#fff0f5"
+                android:textSize="10sp" />
         </LinearLayout>
     </RelativeLayout>
 

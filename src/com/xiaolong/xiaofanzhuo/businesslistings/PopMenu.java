@@ -24,6 +24,7 @@ public class PopMenu {
 
 	// private OnItemClickListener listener;
 
+	@SuppressWarnings("deprecation")
 	public PopMenu(Context context) {
 		// TODO Auto-generated constructor stub
 		this.context = context;

@@ -4,58 +4,61 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <include layout="@layout/hong_navigation_bar" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="42dp"
         android:orientation="horizontal" >
 
-     <ImageButton
-         android:id="@+id/type"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:scaleType="centerInside"
-         android:src="@drawable/liu_catigory_s"
-         android:layout_weight="1"
-         >
-        </ImageButton>   
-        
-    <ImageButton
-        android:id="@+id/dis"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:scaleType="centerInside"
-        android:src="@drawable/liu_averagecost_s" >
-        
+        <ImageButton
+            android:id="@+id/type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:src="@drawable/liu_catigory_s" >
         </ImageButton>
-        
-      <ImageButton
-          android:id="@+id/free_or_not"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_weight="1"
-          android:scaleType="centerInside"
-          android:src="@drawable/liu_idlebusy_s" >
-        
+
+        <ImageButton
+            android:id="@+id/dis"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:src="@drawable/liu_averagecost_s" >
         </ImageButton>
-        
-         <ImageButton
-             android:id="@+id/iswaimai"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:layout_weight="1"
-             android:scaleType="centerInside"
-             android:src="@drawable/liu_deleverable" >
-        
+
+        <ImageButton
+            android:id="@+id/free_or_not"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:src="@drawable/liu_idlebusy_s" >
         </ImageButton>
-        
-        
-</LinearLayout>
-    <ListView
-        android:id="@+id/listView1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:choiceMode="multipleChoice" >
-    </ListView>
+
+        <ImageButton
+            android:id="@+id/iswaimai"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:src="@drawable/liu_deleverable" >
+        </ImageButton>
+    </LinearLayout>
+
+    <com.xiaolong.xiaofanzhuo.businesslistings.RefreshableView
+        android:id="@+id/refreshable_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <ListView
+            android:id="@+id/listView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:choiceMode="multipleChoice" >
+        </ListView>
+    </com.xiaolong.xiaofanzhuo.businesslistings.RefreshableView>
 
 </LinearLayout>

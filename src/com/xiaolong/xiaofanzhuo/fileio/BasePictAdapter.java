@@ -7,6 +7,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class BasePictAdapter extends AbstractBasePictAdapter{
 	
@@ -15,8 +16,18 @@ public class BasePictAdapter extends AbstractBasePictAdapter{
 	private IViewAddAndEventSet viewAdd = null;
 	private boolean isMultiSelectMode;
 	
+	private TextView cartBadgeView;
+	
 	public BasePictAdapter(Context context) {
 		this.context = context;
+	}
+	
+	public void setCartBadgeView(TextView view) {
+		this.cartBadgeView = view;
+	}
+	
+	public TextView getCartBadgeView() {
+		return this.cartBadgeView;
 	}
 	
 	public int getCount() {
@@ -37,6 +48,16 @@ public class BasePictAdapter extends AbstractBasePictAdapter{
 	
 	public void addPicture(Bundle data) {
 		list.add(data);
+		this.notifyDataSetChanged();
+	}
+	
+	public void removePicture(Bundle data) {
+		list.remove(data);
+		this.notifyDataSetChanged();
+	}
+	
+	public void removePicture(int position) {
+		list.remove(position);
 		this.notifyDataSetChanged();
 	}
 

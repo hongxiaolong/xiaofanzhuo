@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="DefaultLocale" severity="ignore" />
+    <issue id="HandlerLeak">
+        <ignore path="src/com/xiaolong/xiaofanzhuo/fileio/AsyncImageLoaderByPath.java" />
+    </issue>
+    <issue id="UseValueOf" severity="ignore">
+        <ignore path="src/com/xiaolong/xiaofanzhuo/dataoperations/DataOperations.java" />
+    </issue>
+</lint>

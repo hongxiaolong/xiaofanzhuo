@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/hong_navigation_bar" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <ListView
+            android:id="@+id/menu_order_listview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" >
+        </ListView>
+
+        <include
+            android:id="@+id/order_shopping_cart"
+            layout="@layout/hong_shopping_cart" />
+
+        <TextView
+            android:id="@+id/order_total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/order_shopping_cart"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:singleLine="true"
+            android:text="购物车空空如也!"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="#333333" />
+
+        <ImageView
+            android:id="@+id/order_phone_img"
+            android:layout_width="52dp"
+            android:layout_height="53dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@id/order_shopping_cart"
+            android:layout_gravity="left"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/hong_order_phone"
+            android:padding="1dp"
+            android:scaleType="centerInside" />
+    </RelativeLayout>
+
+</LinearLayout>

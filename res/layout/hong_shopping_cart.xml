@@ -1,20 +1,30 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/shopping_cart"
     android:layout_width="wrap_content"
-    android:layout_height="70dp"
+    android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
-    android:layout_marginLeft="20dp"
-    android:paddingBottom="22dp"
-    android:gravity="center_vertical" >
+    android:layout_alignParentRight="true"
+    android:layout_marginRight="20dp"
+    android:gravity="center_vertical"
+    android:paddingBottom="8dp" >
 
-        <ImageView
-            android:id="@+id/shopping_img_cart"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:padding="1dp"
-            android:layout_alignParentLeft="true"
-            android:scaleType="centerInside"
-            android:src="@drawable/hong_shopping_cart" />
+    <ImageView
+        android:id="@+id/shopping_img_cart"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dip"
+        android:padding="1dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/hong_shopping_cart" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/tv_rolla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:text="0"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="#FF0000" />
+
+</FrameLayout>
