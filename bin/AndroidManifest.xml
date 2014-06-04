@@ -28,6 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.xiaolong.xiaofanzhuo.businesslistings.BussinessListActivity"></activity>
         <activity android:name="com.xiaolong.xiaofanzhuo.enteractivity.LoginActivity"></activity>
         <activity android:name="com.xiaolong.xiaofanzhuo.enteractivity.RegisterActivity"></activity>
         <activity android:name="com.xiaolong.xiaofanzhuo.enteractivity.PersonInfoActivity"></activity>
