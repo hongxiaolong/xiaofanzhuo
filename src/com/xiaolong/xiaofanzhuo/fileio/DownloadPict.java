@@ -2,6 +2,7 @@ package com.xiaolong.xiaofanzhuo.fileio;
 
 import java.util.List;
 
+import com.xiaolong.xiaofanzhuo.dataoperations.DataOperations;
 import com.xiaolong.xiaofanzhuo.dataoperations.GetResponseFromServerAction;
 
 import android.graphics.Bitmap;
@@ -36,7 +37,7 @@ public class DownloadPict extends Thread {
 			for (String f : ids) {
 				String imageUrl = action.getStringFromServerById(f + "_ImgUrl");
 				@SuppressWarnings("unused")
-				Bitmap map = FileUtil.getBitMapIfNecessary(imageUrl);//由图片url获取bitmap
+				Bitmap map = FileUtil.getBitMapIfNecessary(DataOperations.getActualString(imageUrl));//由图片url获取bitmap
 				Message msg = mHandler.obtainMessage();
 				Bundle data = new Bundle();
 				data.putString("id", f);//把唯一标识符传过去

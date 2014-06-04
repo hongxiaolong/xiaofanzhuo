@@ -11,6 +11,7 @@ import android.view.Window;
 import android.widget.ImageButton;
 
 import com.xiaolong.xiaofanzhuo.businessdetails.BussinessDetailActivity;
+import com.xiaolong.xiaofanzhuo.businesslistings.BussinessListActivity;
 import com.xiaolong.xiaofanzhuo.fileio.FileUtil;
 import com.xiaolong.xiaofanzhuo.myapplication.BaseActivity;
 import com.xiaolong.xiaofanzhuo.myapplication.ButtonClickEffect;
@@ -91,6 +92,8 @@ public class ZoneShowActivity extends BaseActivity {
 				Intent intent = new Intent();
 //				intent.putExtra("area", "1");
 				intent.setClass(ZoneShowActivity.this, BussinessDetailActivity.class);
+     			intent.putExtra("area", "1");
+				intent.setClass(ZoneShowActivity.this, BussinessListActivity.class);
 				startActivity(intent);
 			}
 		});
@@ -111,7 +114,7 @@ public class ZoneShowActivity extends BaseActivity {
 			public void onClick(View v) {
 				Intent intent = new Intent();
 				intent.putExtra("area", "2");
-				intent.setClass(ZoneShowActivity.this, ZoneShowActivity.class);
+				intent.setClass(ZoneShowActivity.this, BussinessListActivity.class);
 				startActivity(intent);
 				finish();
 			}
@@ -122,7 +125,7 @@ public class ZoneShowActivity extends BaseActivity {
 			public void onClick(View v) {
 				Intent intent = new Intent();
 				intent.putExtra("area", "3");
-				intent.setClass(ZoneShowActivity.this, ZoneShowActivity.class);
+				intent.setClass(ZoneShowActivity.this, BussinessListActivity.class);
 				startActivity(intent);
 				finish();
 			}
