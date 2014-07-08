@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <include layout="@layout/hong_navigation_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/popmenu_whole"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:scaleType="centerInside"
+            android:src="@drawable/popmenu_whole" >
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/type"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:scaleType="centerInside"
+            android:src="@drawable/popmenu_type" >
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/dis"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:scaleType="centerInside"
+            android:src="@drawable/popmenu_dis" >
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/free_or_not"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:scaleType="centerInside"
+            android:src="@drawable/popmenu_free" >
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/iswaimai"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:scaleType="centerInside"
+            android:src="@drawable/popmenu_wai" >
+        </ImageButton>
+    </LinearLayout>
+
+    <com.xiaolong.xiaofanzhuo.businesslistings.RefreshableView
+        android:id="@+id/refreshable_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <ListView
+            android:id="@+id/listView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:choiceMode="multipleChoice"
+            android:divider="@drawable/shape"
+            android:dividerHeight="2dp" >
+        </ListView>
+    </com.xiaolong.xiaofanzhuo.businesslistings.RefreshableView>
+
+</LinearLayout>
