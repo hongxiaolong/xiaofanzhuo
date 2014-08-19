@@ -1,9 +1,17 @@
 xiaofanzhuo
 ===========
 
-新版小饭桌Android APP：
+新版小饭桌Android APP（内部项目）：
 
 项目经历了demo、开发、冒烟测试、第一轮详细测试、代码重构、开发、回归测试、上线、运营，总计时间 2个月！
+
+该项目包含三个组件：
+
+1、Python服务端；	https://github.com/xiaolonginfo/xiaofanzhuo-PyServer.git
+
+2、小饭桌Android版用户端；	https://github.com/xiaolonginfo/xiaofanzhuo.git
+
+3、小饭桌Android版商户端；
 
 小饭桌历史版本：
 
