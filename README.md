@@ -1,7 +1,9 @@
-xiaofanzhuo
+xiaofanzhuo Android APP
 ===========
 
-新版小饭桌Android APP（内部项目）：
+Based on Android Java Python(Server)
+
+新版小饭桌Android APP：
 
 项目经历了demo、开发、冒烟测试、第一轮详细测试、代码重构、开发、回归测试、上线、运营，总计时间 2个月！
 
